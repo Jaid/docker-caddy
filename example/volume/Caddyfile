@@ -1,0 +1,17 @@
+(cloudflare) {
+  dns cloudflare {env.cloudflareApiToken}
+}
+
+(fileServer) {
+  encode zstd gzip
+  root * /usr/share/caddy
+  file_server
+}
+
+:80 {
+  import fileServer
+}
+
+:443 {
+  import fileServer
+}
