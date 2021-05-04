@@ -23,4 +23,5 @@ Enable the service.
 
 ```bash
 sudo ln --symbolic ~/docker/caddy/app/caddy.service /etc/systemd/system/caddy.service
+sudo systemctl enable caddy
 ```
