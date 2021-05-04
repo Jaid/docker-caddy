@@ -1,6 +1,6 @@
 # volumes
-/example/volume/data/
-/example/volume/config/
+/app/volume/data/
+/app/volume/config/
 
 # dotenv
 .env

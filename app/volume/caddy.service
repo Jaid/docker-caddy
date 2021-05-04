@@ -1,0 +1,15 @@
+[Unit]
+Description=Caddy via docker-compose
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+WorkingDirectory=/home/jaid/docker/caddy/app
+EnvironmentFile=/home/jaid/docker/caddy/app/.env
+ExecStart=/usr/local/bin/docker-compose up --detach --remove-orphans
+ExecStop=/usr/local/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
