@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+set -o errexit
+
+docker build -t jaidchen/caddy .
+docker push jaidchen/caddy
