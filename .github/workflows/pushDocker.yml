@@ -21,7 +21,7 @@ jobs:
       - name: Set name
         id: dockerHubRef
         shell: bash
-        run: repoName=${{ github.event.repository.name }} && shortName=${repoName##docker-} && printf '::set-output name=ref::%s/%s\n::set-output name=shortName::%s' ${{ env.dockerHubUser }} $shortName $shortName
+        run: repoName=${{ github.repository.name }} && shortName=${repoName##docker-} && printf '::set-output name=ref::%s/%s\n::set-output name=shortName::%s' ${{ env.dockerHubUser }} $shortName $shortName
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up qemu
