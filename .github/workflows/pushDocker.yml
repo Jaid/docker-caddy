@@ -18,15 +18,12 @@ jobs:
       packages: write
       contents: read
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
       - name: Set name
         id: dockerHubRef
         shell: bash
-        run: repoName=${{ github.repository }} && shortName=${repoName##docker-} && printf '::set-output name=ref::%s/%s\n::set-output name=shortName::%s' ${{ env.dockerHubUser }} $shortName $shortName
+        run: repoName=$(basename "$repoSlug") && shortName=${repoName##docker-} && printf '::set-output name=ref::%s/%s\n::set-output name=shortName::%s' ${{ env.dockerHubUser }} $shortName $shortName
+        env:
+          repoSlug: ${{ github.repository }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up qemu
